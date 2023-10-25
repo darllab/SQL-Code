@@ -1,3 +1,9 @@
+Coffee Chain Sales Analysis
+Data Source: csv
+Dataset Source: Kaggle (https://www.kaggle.com/datasets/amruthayenikonda/coffee-chain-sales-dataset)
+
+-- Start Query --
+
 SELECT *
 FROM coffee_chain_sales2
 WHERE type BETWEEN 'Decaf' AND 'Regular' 
