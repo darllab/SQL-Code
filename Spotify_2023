@@ -1,0 +1,23 @@
+-- write a query that find the total number of streams in each year -- 
+
+SELECT released_year,
+COUNT (*) AS streams
+FROM spotify_2023
+GROUP BY released_year
+ORDER BY streams ASC
+
+-- write a query that displays top 5 songs from the spotify_2023 table --
+
+SELECT artists_name, streams
+FROM spotify_2023
+ORDER BY streams DESC
+LIMIT 5
+
+-- write a query that displays total number of songs released in each year -- 
+
+SELECT track_name,
+COUNT(streams) AS total_streams
+FROM spotify_2023
+GROUP BY track_name
+LIMIT 10
+
