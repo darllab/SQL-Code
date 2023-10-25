@@ -1,0 +1,45 @@
+-- CREATE TABLE FOR NEW QUERY -- 
+
+CREATE TABLE delivery_time_food (
+	id VARCHAR(10),
+	delivery_person_id VARCHAR(20),
+	delivery_person_age VARCHAR(10),
+	delivery_person_rating VARCHAR(10),
+	restaurant_latitude VARCHAR(20),
+	restaurant_longitude VARCHAR(20),
+	delivery_location_latitude VARCHAR(20),
+	delivery_location_longitude VARCHAR(20),
+	type_of_order VARCHAR(10),
+	type_of_vehicle TEXT,
+	time_taken VARCHAR(10)
+	
+)	
+	
+-- IMPORT DATA CSV FILE -- 
+
+COPY delivery_time_food FROM '/private/tmp/POSTGRESQL FILES/CSV/deliverytime.csv' WITH CSV HEADER;
+
+
+-- START RUN A QUERY, WRITE A QUERY THAT DISPLAYS ALL THE COLUMNS -- 
+
+SELECT *
+FROM delivery_time_food
+LIMIT 1000
+
+-- CREATING ALIASES --
+
+SELECT
+	type_of_order AS order_type,
+	type_of_vehicle AS vehicle_type
+FROM delivery_time_food
+
+-- RUN A QUERY WHERE DISPLAYS ALL DELIVERIES FROM 10-30 MINS --
+
+SELECT 
+	id,
+	type_of_order AS order_type,
+	type_of_vehicle AS vehicle_type
+FROM delivery_time_food
+WHERE time_taken BETWEEN '10' AND '30'
+ORDER BY time_taken ASC
+LIMIT 1000
