@@ -1,0 +1,151 @@
+CREATE TABLE salary_data (
+	country_name VARCHAR(40),
+	continent_name VARCHAR(20),
+	wage_span VARCHAR(10),
+	median_salary DOUBLE PRECISION,
+	average_salary DOUBLE PRECISION,
+	lowest_salary DOUBLE PRECISION,
+	highest_salary REAL
+	
+)
+
+COPY salary_data FROM '/private/tmp/POSTGRESQL/salary_data.csv' WITH CSV HEADER;
+
+SELECT * 
+FROM salary_data
+ORDER BY continent_name ASC
+
+SELECT DISTINCT continent_name
+FROM salary_data
+
+-- write a query that displays top 10 country with a highest salary and lowest salary -- 
+
+SELECT country_name, highest_salary, continent_name
+FROM salary_data
+ORDER BY highest_salary DESC
+LIMIT 10
+
+SELECT country_name, highest_salary, continent_name
+FROM salary_data
+ORDER BY highest_salary ASC
+LIMIT 10
+
+-- write a query that displays total highest salary in each continent --
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Asia'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Caribbean'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'South America'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'North America'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Oceania'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Africa'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Central America'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Northern America'
+
+UNION ALL
+
+SELECT SUM(highest_salary) AS total_highest_salary
+FROM salary_data
+WHERE continent_name = 'Europe'
+
+-- write a query that displays total lowest salary in each continent --
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Asia'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Caribbean'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'South America'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'North America'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Oceania'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Africa'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Central America'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Northern America'
+
+UNION ALL
+
+SELECT MAX(lowest_salary) AS total_lowest_salary
+FROM salary_data
+WHERE continent_name = 'Europe'
+
+-- write a query that displays countries that has highest and lowest salary --
+
+SELECT DISTINCT country_name, highest_salary
+FROM salary_data
+ORDER BY highest_salary DESC
+LIMIT 10
+
+SELECT DISTINCT country_name, lowest_salary 
+FROM salary_data
+ORDER BY lowest_salary ASC
+LIMIT 10
