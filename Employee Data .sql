@@ -10,10 +10,10 @@ GROUP BY joiningyear
 -- Display all rows if underqualified or overqualified based on years of experience -- 
 
 SELECT education, age,
-case 
-	when experienceincurrentdomain > 5 THEN 'Overqualified'
-    WHEN experienceincurrentdomain < 5 THEN 'Underqualified'
-    ELSE experienceincurrentdomain
+CASE
+WHEN experienceincurrentdomain > 5 THEN 'Overqualified'
+WHEN experienceincurrentdomain < 5 THEN 'Underqualified'
+ELSE experienceincurrentdomain
 END as number_of_experiences
 FROM Employee
 GROUP BY age
