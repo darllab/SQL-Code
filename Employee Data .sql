@@ -11,9 +11,9 @@ GROUP BY joiningyear
 
 SELECT education, age,
 CASE
-WHEN experienceincurrentdomain > 5 THEN 'Overqualified'
-WHEN experienceincurrentdomain < 5 THEN 'Underqualified'
-ELSE experienceincurrentdomain
+	WHEN experienceincurrentdomain > 5 THEN 'Overqualified'
+	WHEN experienceincurrentdomain < 5 THEN 'Underqualified'
+	ELSE experienceincurrentdomain
 END as number_of_experiences
 FROM Employee
 GROUP BY age
@@ -22,8 +22,8 @@ GROUP BY age
 
 SELECT 
 	SUM(CASE WHEN education = 'Bachelors' then 1 end) as bachelors_count,
-    SUM(CASE WHEN education = 'Masters' then 1 end) as masters_count,
-    SUM(CASE WHEN education = 'PHD' then 1 end) as PHD_count
+    	SUM(CASE WHEN education = 'Masters' then 1 end) as masters_count,
+    	SUM(CASE WHEN education = 'PHD' then 1 end) as PHD_count
 FROM Employee    
     
  
@@ -31,7 +31,7 @@ FROM Employee
 
 SELECT
 	(SELECT count(*) from Employee where Gender = 'Male') as male_count,
-    (SELECT count(*) from Employee where Gender = 'Female') as female_count;   
+	(SELECT count(*) from Employee where Gender = 'Female') as female_count;   
     
 -- Show all columns for Employee table, most recent joining year --
 
@@ -45,7 +45,7 @@ limit 1
 
 SELECT education,
 	MIN(joiningyear) AS first_joining_year,
-    MAX(joiningyear) as last_joining_year
+    	MAX(joiningyear) as last_joining_year
 FROM Employee    
 GROUP BY education
  
